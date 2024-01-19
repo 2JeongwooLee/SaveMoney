@@ -62,7 +62,7 @@
    
 
  ## ERD
-
+![짠돌이서비스 ERD](https://github.com/2JeongwooLee/SaveMoney/assets/141619188/57c65964-73e0-404c-9d1f-629954e4ac99)
    
  ## Trouble Shooting
  
