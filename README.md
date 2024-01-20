@@ -62,7 +62,7 @@
    
 
  ## ERD
- <img width="100%" src="(https://github.com/2JeongwooLee/SaveMoney/assets/141619188/8ca48f2b-7ac1-40ea-9fef-b5c5d65ef339)"/>
+ <img width="80%" src="https://github.com/2JeongwooLee/SaveMoney/assets/141619188/8ca48f2b-7ac1-40ea-9fef-b5c5d65ef339"/>
 
  ## Trouble Shooting
  
