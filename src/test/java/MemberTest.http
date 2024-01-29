@@ -22,14 +22,14 @@ Content-Type: application/json
 ### 회원정보 조회
 GET http://localhost:8080/api/member/info
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2MjA4MTAwLCJleHAiOjE3MDYyMTE3MDB9.Jmfa1arnPNr8cnsK-hAjkT6cBQfrLBj14wJLsIwpxlk
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2NTQwOTQzLCJleHAiOjE3MDY1NDQ1NDN9.Zgdw7yZ6Ty41mwz1Ec4QZpyl-5tsXUgIWKsgEbZ67w0
 
 
 
 ### 회원정보 수정
 PUT http://localhost:8080/api/member/update
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2MjA4MTAwLCJleHAiOjE3MDYyMTE3MDB9.Jmfa1arnPNr8cnsK-hAjkT6cBQfrLBj14wJLsIwpxlk
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2NTQwOTQzLCJleHAiOjE3MDY1NDQ1NDN9.Zgdw7yZ6Ty41mwz1Ec4QZpyl-5tsXUgIWKsgEbZ67w0
 
 {
   "email": "abcd@naver.com",
@@ -42,4 +42,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvb
 ### 회원탈퇴
 DELETE http://localhost:8080/api/member/delete
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2MjA4MTAwLCJleHAiOjE3MDYyMTE3MDB9.Jmfa1arnPNr8cnsK-hAjkT6cBQfrLBj14wJLsIwpxlk
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2NTM5OTkyLCJleHAiOjE3MDY1NDM1OTJ9.qgAqQkBPAbY3I7o4VyZBYbGvP-Wh9PK07-2vzu0XcyM

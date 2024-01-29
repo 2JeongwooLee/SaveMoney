@@ -12,11 +12,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Builder.Default;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.envers.AuditOverride;
 import org.hibernate.envers.Audited;
 import org.springframework.security.core.GrantedAuthority;
@@ -31,7 +29,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @AllArgsConstructor
 @Audited
 @AuditOverride(forClass = BaseEntity.class)
-public class Member extends BaseEntity implements UserDetails {
+public class Member extends BaseEntity{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -55,33 +53,4 @@ public class Member extends BaseEntity implements UserDetails {
   @Column
   private Long point;
 
-  @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    return List.of(new SimpleGrantedAuthority("ROLE_MEMBER"));
-  }
-
-  @Override
-  public String getUsername() {
-    return null;
-  }
-
-  @Override
-  public boolean isAccountNonExpired() {
-    return false;
-  }
-
-  @Override
-  public boolean isAccountNonLocked() {
-    return false;
-  }
-
-  @Override
-  public boolean isCredentialsNonExpired() {
-    return false;
-  }
-
-  @Override
-  public boolean isEnabled() {
-    return false;
-  }
 }

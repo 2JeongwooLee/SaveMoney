@@ -29,7 +29,7 @@ public class MemberController {
   // 회원가입
   @PostMapping("/register")
   public ResponseEntity<?> registerMember(@RequestBody RegisterForm form) {
-    return ResponseEntity.ok().body(memberService.register(form));
+    return ResponseEntity.ok(memberService.register(form).getMemberName() + "님 회원가입이 완료되었습니다.");
   }
 
   // 로그인

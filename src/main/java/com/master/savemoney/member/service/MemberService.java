@@ -10,7 +10,6 @@ import com.master.savemoney.member.entity.Member;
 import com.master.savemoney.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,7 +27,7 @@ public class MemberService implements UserDetailsService{
 
   // 회원가입
   @Transactional
-  public String register(RegisterForm form) {
+  public MemberDto register(RegisterForm form) {
     if (memberRepository.existsByEmail(form.getEmail())) {
       throw new CustomException(ErrorCode.ALREADY_REGISTERED_EMAIL);
     }
@@ -41,7 +40,7 @@ public class MemberService implements UserDetailsService{
             .point(0L)
         .build());
 
-    return savedMember.getMemberName() + "님 회원가입 완료되었습니다.";
+    return MemberDto.from(savedMember);
   }
 
   // 로그인
