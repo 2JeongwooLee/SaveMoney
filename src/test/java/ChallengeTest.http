@@ -1,21 +1,55 @@
 ### 챌린지 등록
 POST http://localhost:8080/api/challenge/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2ODYwNzU4LCJleHAiOjE3MDY4NjQzNTh9.2w-L6Sw0b2b0ZMpbSuxxQ5xjJPUo_wOFypVubIKEk3Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2OTQ1MzA1LCJleHAiOjE3MDY5NDg5MDV9.GmbFJuisfWv1kdXYuQNgN_6TOKQXrhHJM_ikxO-oMss
 
 {
-  "challengeName": "24년 03월 챌린지",
-  "challengeStartDate": "2024-03-01"
+  "challengeName": "24년 05월 챌린지",
+  "challengeStartDate": "2024-05-01"
 }
 
 
 ### 전체 챌린지 조회
 GET http://localhost:8080/api/challenge/total
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2ODYwNzU4LCJleHAiOjE3MDY4NjQzNTh9.2w-L6Sw0b2b0ZMpbSuxxQ5xjJPUo_wOFypVubIKEk3Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2OTQ1MzA1LCJleHAiOjE3MDY5NDg5MDV9.GmbFJuisfWv1kdXYuQNgN_6TOKQXrhHJM_ikxO-oMss
 
 
 ### 챌린지 삭제
-DELETE http://localhost:8080/api/challenge/delete/1
+DELETE http://localhost:8080/api/challenge/delete/3
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2ODYwNzU4LCJleHAiOjE3MDY4NjQzNTh9.2w-L6Sw0b2b0ZMpbSuxxQ5xjJPUo_wOFypVubIKEk3Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2ODg3MDczLCJleHAiOjE3MDY4OTA2NzN9.wnpOb2NE_PO3khEWBLaCXqmVOV_jpDu5uRNSBHG7-q0
+
+
+### 챌린지 목표 등록
+POST http://localhost:8080/api/challenge-goal/register/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2OTQ1MzA1LCJleHAiOjE3MDY5NDg5MDV9.GmbFJuisfWv1kdXYuQNgN_6TOKQXrhHJM_ikxO-oMss
+
+{
+  "targetCategory": "FOOD",
+  "targetMoney": 700000
+}
+
+
+### 챌린지 목표 조회
+GET http://localhost:8080/api/challenge-goal/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2OTQ1MzA1LCJleHAiOjE3MDY5NDg5MDV9.GmbFJuisfWv1kdXYuQNgN_6TOKQXrhHJM_ikxO-oMss
+
+
+### 챌린지 목표 수정
+PUT http://localhost:8080/api/challenge-goal/update/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2OTQ1MzA1LCJleHAiOjE3MDY5NDg5MDV9.GmbFJuisfWv1kdXYuQNgN_6TOKQXrhHJM_ikxO-oMss
+
+{
+  "targetCategory": "FOOD",
+  "targetMoney": 600000
+}
+
+
+### 챌린지 목표 삭제
+DELETE http://localhost:8080/api/challenge-goal/delete/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2OTQ1MzA1LCJleHAiOjE3MDY5NDg5MDV9.GmbFJuisfWv1kdXYuQNgN_6TOKQXrhHJM_ikxO-oMss

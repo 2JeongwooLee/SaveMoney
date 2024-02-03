@@ -38,11 +38,9 @@ public class ChallengeController {
     return ResponseEntity.ok().body(challengeService.getTotalChallenge(tokenProvider.getAuthentication(token.substring(7)).getName()));
   }
 
-  // 진행 중 챌린지 조회
+  // 진행 중 챌린지 조회. 결제 내역 구현 후 구현
 
-  // 종료 된 챌린지 조회
-
-  // 챌린지 목표 수정
+  // 종료 된 챌린지 조회. 결제 내역 구현 후 구현
 
   // 챌린지 삭제
   @DeleteMapping("/delete/{challengId}")
