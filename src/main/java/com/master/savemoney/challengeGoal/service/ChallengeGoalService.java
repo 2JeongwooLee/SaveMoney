@@ -12,9 +12,7 @@ import com.master.savemoney.common.exception.CustomException;
 import com.master.savemoney.common.exception.ErrorCode;
 import com.master.savemoney.member.entity.Member;
 import com.master.savemoney.member.repository.MemberRepository;
-import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +35,8 @@ public class ChallengeGoalService {
 
     if (!Objects.equals(member.getId(), challenge.getMember().getId())) {
       throw new CustomException(ErrorCode.MEMBER_NOT_MATCH_CHALLENGE);
-    } else if(challenge.getChallengeType() != ChallengeType.STANDBY) {
+    }
+    if(challenge.getChallengeType() != ChallengeType.STANDBY) {
       throw new CustomException(ErrorCode.FINISHED_CHALLENGE_OR_IN_PROGRESS);
     }
 
@@ -51,21 +50,18 @@ public class ChallengeGoalService {
   }
 
   // 챌린지 목표 조회
-  public List<ChallengeGoalDto> getChallengeGoal(String email, Long challengeId) {
+  public ChallengeGoalDto getChallengeGoal(String email, Long challengeGoalId) {
     Member member = memberRepository.findByEmail(email)
         .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
 
-    Challenge challenge = challengeRepository.findById(challengeId)
-        .orElseThrow(() -> new CustomException(ErrorCode.CHALLENGE_NOT_FOUND));
-
-    if (!Objects.equals(member.getId(), challenge.getMember().getId())) {
-      throw new CustomException(ErrorCode.MEMBER_NOT_MATCH_CHALLENGE);
-    }
-
-    List<ChallengeGoal> challengeGoalList = challengeGoalRepository.findAllByChallenge(challenge)
+    ChallengeGoal challengeGoal = challengeGoalRepository.findById(challengeGoalId)
         .orElseThrow(() -> new CustomException(ErrorCode.CHALLENGE_GOAL_NOT_FOUND));
 
-    return challengeGoalList.stream().map(ChallengeGoalDto::from).collect(Collectors.toList());
+    if (!Objects.equals(member.getId(), challengeGoal.getChallenge().getMember().getId())) {
+      throw new CustomException(ErrorCode.MEMBER_NOT_MATCH_CHALLENGE_GOAL);
+    }
+
+    return ChallengeGoalDto.from(challengeGoal);
   }
 
   // 챌린지 목표 수정

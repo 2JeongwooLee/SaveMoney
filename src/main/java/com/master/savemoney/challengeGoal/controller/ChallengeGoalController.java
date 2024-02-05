@@ -35,11 +35,11 @@ public class ChallengeGoalController {
   }
 
   // 챌린지 목표 조회
-  @GetMapping("/{challengeId}")
+  @GetMapping("/{challengeGoalId}")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
-  public ResponseEntity<?> getChallengeGoal(@RequestHeader("Authorization") String token, @PathVariable Long challengeId) {
+  public ResponseEntity<?> getChallengeGoal(@RequestHeader("Authorization") String token, @PathVariable Long challengeGoalId) {
     return ResponseEntity.ok()
-        .body(challengeGoalService.getChallengeGoal(tokenProvider.getAuthentication(token.substring(7)).getName(), challengeId));
+        .body(challengeGoalService.getChallengeGoal(tokenProvider.getAuthentication(token.substring(7)).getName(), challengeGoalId));
   }
 
   // 챌린지 목표 수정

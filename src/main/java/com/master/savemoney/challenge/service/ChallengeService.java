@@ -10,7 +10,6 @@ import com.master.savemoney.common.exception.ErrorCode;
 import com.master.savemoney.member.entity.Member;
 import com.master.savemoney.member.repository.MemberRepository;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -35,8 +34,9 @@ public class ChallengeService {
     } else if(form.getChallengeStartDate().getMonth().equals(LocalDate.now().getMonth())) {
       throw new CustomException(ErrorCode.EQUAL_MONTH);
     }
-    // TODO : 추가적인 예외처리 사항 생각
+    // 추가적인 예외 상황 고려
 
+    // TODO : 시각이 고정되어 들어가기에 DATE로만 관리
     Challenge savedChallenge = challengeRepository.save(Challenge.builder()
             .member(member)
             .challengeName(form.getChallengeName())
@@ -53,8 +53,11 @@ public class ChallengeService {
     Member member = memberRepository.findByEmail(email)
         .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
 
-    List<Challenge> challengeList = challengeRepository.findAllByMember_Id(member.getId())
-        .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
+    List<Challenge> challengeList = challengeRepository.findAllByMemberId(member.getId());
+
+    if (challengeList.isEmpty()) {
+      throw new CustomException(ErrorCode.CHALLENGE_NOT_FOUND);
+    }
 
     return challengeList.stream().map(ChallengeDto::from).collect(Collectors.toList());
   }
