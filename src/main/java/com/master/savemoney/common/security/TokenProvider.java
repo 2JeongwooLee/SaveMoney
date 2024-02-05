@@ -20,7 +20,7 @@ import org.springframework.util.StringUtils;
 public class TokenProvider {
   private static final long TOKEN_EXPIRE_TIME = 1000 * 60 * 60;
 
-  @Value("{spring.jwt.secret}")
+  @Value("${spring.jwt.secret}")
   private String secretKey;
 
   private final MemberService memberService;

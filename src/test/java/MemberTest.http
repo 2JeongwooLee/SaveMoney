@@ -22,7 +22,7 @@ Content-Type: application/json
 ### 회원정보 조회
 GET http://localhost:8080/api/member/info
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2NTQwOTQzLCJleHAiOjE3MDY1NDQ1NDN9.Zgdw7yZ6Ty41mwz1Ec4QZpyl-5tsXUgIWKsgEbZ67w0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3MTQ1NjIwLCJleHAiOjE3MDcxNDkyMjB9.2Uf5bTn211YhaYxDKoCT84HVq6LmdImNXAepqmpchHg
 
 
 

@@ -1,0 +1,55 @@
+### 챌린지 등록
+POST http://localhost:8080/api/challenge/register
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3MTQ1NjIwLCJleHAiOjE3MDcxNDkyMjB9.2Uf5bTn211YhaYxDKoCT84HVq6LmdImNXAepqmpchHg
+
+{
+  "challengeName": "24년 04월 챌린지",
+  "challengeStartDate": "2024-04-01"
+}
+
+
+### 전체 챌린지 조회
+GET http://localhost:8080/api/challenge/total
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3MTQ1NjIwLCJleHAiOjE3MDcxNDkyMjB9.2Uf5bTn211YhaYxDKoCT84HVq6LmdImNXAepqmpchHg
+
+
+### 챌린지 삭제
+DELETE http://localhost:8080/api/challenge/delete/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2ODg3MDczLCJleHAiOjE3MDY4OTA2NzN9.wnpOb2NE_PO3khEWBLaCXqmVOV_jpDu5uRNSBHG7-q0
+
+
+### 챌린지 목표 등록
+POST http://localhost:8080/api/challenge-goal/register/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3MTQ1NjIwLCJleHAiOjE3MDcxNDkyMjB9.2Uf5bTn211YhaYxDKoCT84HVq6LmdImNXAepqmpchHg
+
+{
+  "targetCategory": "HOUSE",
+  "targetMoney": 500000
+}
+
+
+### 챌린지 목표 조회
+GET http://localhost:8080/api/challenge-goal/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3MTQ1NjIwLCJleHAiOjE3MDcxNDkyMjB9.2Uf5bTn211YhaYxDKoCT84HVq6LmdImNXAepqmpchHg
+
+
+### 챌린지 목표 수정
+PUT http://localhost:8080/api/challenge-goal/update/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3MTQ1NjIwLCJleHAiOjE3MDcxNDkyMjB9.2Uf5bTn211YhaYxDKoCT84HVq6LmdImNXAepqmpchHg
+
+{
+  "targetCategory": "BEAUTY",
+  "targetMoney": 100000
+}
+
+
+### 챌린지 목표 삭제
+DELETE http://localhost:8080/api/challenge-goal/delete/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3MTQ1NjIwLCJleHAiOjE3MDcxNDkyMjB9.2Uf5bTn211YhaYxDKoCT84HVq6LmdImNXAepqmpchHg
