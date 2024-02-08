@@ -40,13 +40,21 @@ public class ChallengeController {
   }
 
   // 챌린지 타입에 따른 챌린지 조회
-  @GetMapping("/{challengeType}")
+  @GetMapping("/Type/{challengeType}")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> getChallengeWithChallengeType(
       @RequestHeader("Authorization") String token,
       @PathVariable ChallengeType challengeType) {
     return ResponseEntity.ok()
         .body(challengeService.getChallengeWithChallengeType(tokenProvider.getAuthentication(token.substring(7)).getName(), challengeType));
+  }
+
+  // 진행 중인 챌린지 조회
+  @GetMapping("/in-progress")
+  @PreAuthorize("hasRole('ROLE_MEMBER')")
+  public ResponseEntity<?> getChallengeWithInProgress(@RequestHeader("Authorization") String token) {
+    return ResponseEntity.ok()
+        .body(challengeService.getChallengeWithInProgress(tokenProvider.getAuthentication(token.substring(7)).getName()));
   }
 
   // 챌린지 삭제

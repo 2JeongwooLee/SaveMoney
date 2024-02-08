@@ -11,11 +11,16 @@ import com.master.savemoney.challengeGoal.entity.ChallengeGoal;
 import com.master.savemoney.challengeGoal.repository.ChallengeGoalRepository;
 import com.master.savemoney.common.exception.CustomException;
 import com.master.savemoney.common.exception.ErrorCode;
+import com.master.savemoney.common.type.ConsumptionCategory;
 import com.master.savemoney.member.entity.Member;
 import com.master.savemoney.member.repository.MemberRepository;
+import com.master.savemoney.paymentDetail.entity.PaymentDetail;
+import com.master.savemoney.paymentDetail.repository.PaymentDetailRepository;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +33,7 @@ public class ChallengeService {
   private final MemberRepository memberRepository;
   private final ChallengeRepository challengeRepository;
   private final ChallengeGoalRepository challengeGoalRepository;
+  private final PaymentDetailRepository paymentDetailRepository;
 
   // 챌린지 등록
   @Transactional
@@ -69,7 +75,7 @@ public class ChallengeService {
   }
 
   // 타입에 따른 챌린지 조회
-  public List<ChallengeDetail> getChallengeWithChallengeType(String email, ChallengeType challengeType){
+  public List<ChallengeDto> getChallengeWithChallengeType(String email, ChallengeType challengeType){
     Member member = memberRepository.findByEmail(email)
         .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
 
@@ -79,13 +85,30 @@ public class ChallengeService {
       throw new CustomException(ErrorCode.CHALLENGE_NOT_MATCH_TYPE);
     }
 
-    List<ChallengeDetail> challengeDetailList = new ArrayList<>();
-    for (Challenge challenge : challengeList) {
-      List<ChallengeGoal> challengeGoalList = challengeGoalRepository.findAllByChallengeId(challenge.getId());
-      challengeDetailList.add(ChallengeDetail.from(challenge, challengeGoalList.stream().map(ChallengeGoalDto::from).collect(Collectors.toList())));
+    return challengeList.stream().map(ChallengeDto::from).collect(Collectors.toList());
+  }
+
+  // 진행 중인 챌린지 조회
+  public ChallengeDetail getChallengeWithInProgress(String email) {
+    Member member = memberRepository.findByEmail(email)
+        .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
+
+    Challenge challenge = challengeRepository.findByInProgressChallenge(member.getId())
+        .orElseThrow(() -> new CustomException(ErrorCode.NO_ONGOING_CHALLENGE));
+
+    List<ChallengeGoal> challengeGoalList = challengeGoalRepository.findAllByChallengeId(challenge.getId());
+
+    List<PaymentDetail> paymentDetailList = paymentDetailRepository.findAllByChallengeId(challenge.getId());
+
+    Map<ConsumptionCategory, Integer> paymentMap = new HashMap<>();
+
+    for (PaymentDetail paymentDetail : paymentDetailList) {
+      paymentMap.put(paymentDetail.getPaymentCategory(),
+          paymentMap.getOrDefault(paymentDetail.getPaymentCategory(), 0) + paymentDetail.getPaymentMoney());
     }
 
-    return challengeDetailList;
+    return ChallengeDetail.from(challenge,
+        challengeGoalList.stream().map(ChallengeGoalDto::from).collect(Collectors.toList()), paymentMap);
   }
 
   // 챌린지 삭제

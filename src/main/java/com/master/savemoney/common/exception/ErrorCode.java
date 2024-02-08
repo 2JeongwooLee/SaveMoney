@@ -20,6 +20,7 @@ public enum ErrorCode {
   MEMBER_NOT_MATCH_CHALLENGE(HttpStatus.BAD_REQUEST.value(), "회원의 챌린지가 아닙니다."),
   FINISHED_CHALLENGE_OR_IN_PROGRESS(HttpStatus.BAD_REQUEST.value(), "진행 중이거나 종료된 챌린지입니다."),
   FAIL_DELETE_CHALLENGE(HttpStatus.BAD_REQUEST.value(), "챌린지를 삭제할 수 없습니다."),
+  NO_ONGOING_CHALLENGE(HttpStatus.BAD_REQUEST.value(), "진행 중인 챌린지가 없습니다."),
 
   // 챌린지 목표
   MEMBER_NOT_MATCH_CHALLENGE_GOAL(HttpStatus.BAD_REQUEST.value(), "회원의 챌린지 목표가 아닙니다."),
