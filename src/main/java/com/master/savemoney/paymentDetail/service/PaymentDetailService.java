@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -62,16 +63,13 @@ public class PaymentDetailService {
 
   // 결제내역 등록 시 챌린지 실패 여부 확인
   // TODO : 수정, 삭제 시 챌린지 진행 상태 다시 확인
+  // TODO : 메소드가 자주 사용되므로 캐싱
   private void checkChallengeStatus(Challenge challenge) {
     List<ChallengeGoal> challengeGoalList = challengeGoalRepository.findAllByChallengeId(challenge.getId());
+    List<PaymentDetail> paymentDetailList = paymentDetailRepository.findAllByChallengeIdGroupByPaymentCategory(challenge.getId());
 
-    List<PaymentDetail> paymentDetailList = paymentDetailRepository.findAllByChallengeId(challenge.getId());
-
-    Map<ConsumptionCategory, Integer> checkingMap = new HashMap<>();
-
-    for (ChallengeGoal goal : challengeGoalList) {
-      checkingMap.put(goal.getTargetCategory(), goal.getTargetMoney());
-    }
+    Map<ConsumptionCategory, Integer> checkingMap = challengeGoalList.stream()
+        .collect(Collectors.toMap(ChallengeGoal::getTargetCategory, ChallengeGoal::getTargetMoney));
 
     for (PaymentDetail paymentDetail : paymentDetailList) {
       checkingMap.put(paymentDetail.getPaymentCategory(),
@@ -80,6 +78,7 @@ public class PaymentDetailService {
       if (checkingMap.get(paymentDetail.getPaymentCategory()) < 0) {
         challenge.setChallengeType(ChallengeType.FAIL);
         challengeRepository.save(challenge);
+        break;
       }
     }
   }

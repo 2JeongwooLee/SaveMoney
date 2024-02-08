@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -46,13 +47,10 @@ public class ChallengeScheduler {
 
     for (Challenge challenge : challengeList) {
       List<ChallengeGoal> challengeGoalList = challengeGoalRepository.findAllByChallengeId(challenge.getId());
-      List<PaymentDetail> paymentDetailList = paymentDetailRepository.findAllByChallengeId(challenge.getId());
+      List<PaymentDetail> paymentDetailList = paymentDetailRepository.findAllByChallengeIdGroupByPaymentCategory(challenge.getId());
 
-      Map<ConsumptionCategory, Integer> checkingMap = new HashMap<>();
-
-      for (ChallengeGoal challengeGoal : challengeGoalList) {
-        checkingMap.put(challengeGoal.getTargetCategory(), challengeGoal.getTargetMoney());
-      }
+      Map<ConsumptionCategory, Integer> checkingMap = challengeGoalList.stream()
+          .collect(Collectors.toMap(ChallengeGoal::getTargetCategory, ChallengeGoal::getTargetMoney));
 
       for (PaymentDetail paymentDetail : paymentDetailList) {
         checkingMap.put(paymentDetail.getPaymentCategory(), checkingMap.get(paymentDetail.getPaymentCategory()) - paymentDetail.getPaymentMoney());
