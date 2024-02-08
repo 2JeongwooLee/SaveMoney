@@ -3,6 +3,7 @@ package com.master.savemoney.challenge.controller;
 import com.master.savemoney.challenge.dto.ChallengeDto;
 import com.master.savemoney.challenge.dto.RegisterChallengeForm;
 import com.master.savemoney.challenge.service.ChallengeService;
+import com.master.savemoney.challenge.type.ChallengeType;
 import com.master.savemoney.common.security.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -38,9 +39,23 @@ public class ChallengeController {
     return ResponseEntity.ok().body(challengeService.getTotalChallenge(tokenProvider.getAuthentication(token.substring(7)).getName()));
   }
 
-  // 진행 중 챌린지 조회. 결제 내역 구현 후 구현
+  // 챌린지 타입에 따른 챌린지 조회
+  @GetMapping("/Type/{challengeType}")
+  @PreAuthorize("hasRole('ROLE_MEMBER')")
+  public ResponseEntity<?> getChallengeWithChallengeType(
+      @RequestHeader("Authorization") String token,
+      @PathVariable ChallengeType challengeType) {
+    return ResponseEntity.ok()
+        .body(challengeService.getChallengeWithChallengeType(tokenProvider.getAuthentication(token.substring(7)).getName(), challengeType));
+  }
 
-  // 종료 된 챌린지 조회. 결제 내역 구현 후 구현
+  // 진행 중인 챌린지 조회
+  @GetMapping("/in-progress")
+  @PreAuthorize("hasRole('ROLE_MEMBER')")
+  public ResponseEntity<?> getChallengeWithInProgress(@RequestHeader("Authorization") String token) {
+    return ResponseEntity.ok()
+        .body(challengeService.getChallengeWithInProgress(tokenProvider.getAuthentication(token.substring(7)).getName()));
+  }
 
   // 챌린지 삭제
   @DeleteMapping("/delete/{challengId}")

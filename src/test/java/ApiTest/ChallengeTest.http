@@ -1,0 +1,70 @@
+### 챌린지 등록
+POST http://localhost:8080/api/challenge/register
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3Mzg3MDIwLCJleHAiOjE3MDczOTA2MjB9.UJGuJkrMiMvU-m5PXIS3bhATQCO9KcL7KWShXItx3io
+
+{
+  "challengeName": "24년 05월 챌린지",
+  "challengeStartDate": "2024-05-01"
+}
+
+
+### 전체 챌린지 조회
+GET http://localhost:8080/api/challenge/total
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3Mzg0ODM5LCJleHAiOjE3MDczODg0Mzl9.SCdD2RMvQdVkYbcl9aWLVAbckL2dlg1Z4TdPUATtI8g
+
+
+### 타입에 따른 챌린지 조회
+GET http://localhost:8080/api/challenge/Type/IN_PROGRESS
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3Mzg3MDIwLCJleHAiOjE3MDczOTA2MjB9.UJGuJkrMiMvU-m5PXIS3bhATQCO9KcL7KWShXItx3io
+
+
+### 진행 중인 챌린지 조회
+GET http://localhost:8080/api/challenge/in-progress
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3Mzg3MDIwLCJleHAiOjE3MDczOTA2MjB9.UJGuJkrMiMvU-m5PXIS3bhATQCO9KcL7KWShXItx3io
+
+
+### 챌린지 삭제
+DELETE http://localhost:8080/api/challenge/delete/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA2ODg3MDczLCJleHAiOjE3MDY4OTA2NzN9.wnpOb2NE_PO3khEWBLaCXqmVOV_jpDu5uRNSBHG7-q0
+
+
+//================================================//
+
+
+### 챌린지 목표 등록
+POST http://localhost:8080/api/challenge-goal/register/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3Mzg3MDIwLCJleHAiOjE3MDczOTA2MjB9.UJGuJkrMiMvU-m5PXIS3bhATQCO9KcL7KWShXItx3io
+
+{
+  "targetCategory": "HOUSE",
+  "targetMoney": 600000
+}
+
+
+### 챌린지 목표 조회
+GET http://localhost:8080/api/challenge-goal/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3Mzg3MDIwLCJleHAiOjE3MDczOTA2MjB9.UJGuJkrMiMvU-m5PXIS3bhATQCO9KcL7KWShXItx3io
+
+
+### 챌린지 목표 수정
+PUT http://localhost:8080/api/challenge-goal/update/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3MTQ1NjIwLCJleHAiOjE3MDcxNDkyMjB9.2Uf5bTn211YhaYxDKoCT84HVq6LmdImNXAepqmpchHg
+
+{
+  "targetCategory": "BEAUTY",
+  "targetMoney": 100000
+}
+
+
+### 챌린지 목표 삭제
+DELETE http://localhost:8080/api/challenge-goal/delete/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3MTQ1NjIwLCJleHAiOjE3MDcxNDkyMjB9.2Uf5bTn211YhaYxDKoCT84HVq6LmdImNXAepqmpchHg
