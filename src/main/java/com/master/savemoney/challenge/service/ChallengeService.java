@@ -72,7 +72,7 @@ public class ChallengeService {
         .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
 
     if (!Objects.equals(member.getId(), deletedChallenge.getMember().getId())) {
-      throw new CustomException(ErrorCode.FAIL_DELETE);
+      throw new CustomException(ErrorCode.FAIL_DELETE_CHALLENGE);
     }
 
     challengeRepository.delete(deletedChallenge);

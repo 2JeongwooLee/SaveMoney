@@ -1,7 +1,7 @@
 ### 챌린지 등록
 POST http://localhost:8080/api/challenge/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3MTQ1NjIwLCJleHAiOjE3MDcxNDkyMjB9.2Uf5bTn211YhaYxDKoCT84HVq6LmdImNXAepqmpchHg
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3Mzc4MjQyLCJleHAiOjE3MDczODE4NDJ9.slHOP4lJpInznk-2eLnACQHZC-TBjiryAWNx3_k3Sl4
 
 {
   "challengeName": "24년 04월 챌린지",
@@ -22,20 +22,20 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvb
 
 
 ### 챌린지 목표 등록
-POST http://localhost:8080/api/challenge-goal/register/2
+POST http://localhost:8080/api/challenge-goal/register/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3MTQ1NjIwLCJleHAiOjE3MDcxNDkyMjB9.2Uf5bTn211YhaYxDKoCT84HVq6LmdImNXAepqmpchHg
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3Mzc4MjQyLCJleHAiOjE3MDczODE4NDJ9.slHOP4lJpInznk-2eLnACQHZC-TBjiryAWNx3_k3Sl4
 
 {
-  "targetCategory": "HOUSE",
+  "targetCategory": "FOOD",
   "targetMoney": 500000
 }
 
 
 ### 챌린지 목표 조회
-GET http://localhost:8080/api/challenge-goal/2
+GET http://localhost:8080/api/challenge-goal/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3MTQ1NjIwLCJleHAiOjE3MDcxNDkyMjB9.2Uf5bTn211YhaYxDKoCT84HVq6LmdImNXAepqmpchHg
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3Mzc4MjQyLCJleHAiOjE3MDczODE4NDJ9.slHOP4lJpInznk-2eLnACQHZC-TBjiryAWNx3_k3Sl4
 
 
 ### 챌린지 목표 수정

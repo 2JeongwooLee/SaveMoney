@@ -3,8 +3,15 @@ package com.master.savemoney.challenge.scheduler;
 import com.master.savemoney.challenge.entity.Challenge;
 import com.master.savemoney.challenge.repository.ChallengeRepository;
 import com.master.savemoney.challenge.type.ChallengeType;
+import com.master.savemoney.challengeGoal.entity.ChallengeGoal;
+import com.master.savemoney.challengeGoal.repository.ChallengeGoalRepository;
+import com.master.savemoney.common.type.ConsumptionCategory;
+import com.master.savemoney.paymentDetail.entity.PaymentDetail;
+import com.master.savemoney.paymentDetail.repository.PaymentDetailRepository;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -15,6 +22,8 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class ChallengeScheduler {
   private final ChallengeRepository challengeRepository;
+  private final ChallengeGoalRepository challengeGoalRepository;
+  private final PaymentDetailRepository paymentDetailRepository;
 
   @Scheduled(cron = "${scheduler.start.challenge}")
   public void challengStartScheduling() {
@@ -36,9 +45,28 @@ public class ChallengeScheduler {
     List<Challenge> challengeList = challengeRepository.findAllEndChallenge();
 
     for (Challenge challenge : challengeList) {
-      if (challenge.getChallengeType().equals(ChallengeType.IN_PROGRESS)) {
-        // TODO 성공실패 여부 판단하여 저장
+      List<ChallengeGoal> challengeGoalList = challengeGoalRepository.findAllByChallengeId(challenge.getId());
+      List<PaymentDetail> paymentDetailList = paymentDetailRepository.findAllByChallengeId(challenge.getId());
+
+      Map<ConsumptionCategory, Integer> checkingMap = new HashMap<>();
+
+      for (ChallengeGoal challengeGoal : challengeGoalList) {
+        checkingMap.put(challengeGoal.getTargetCategory(), challengeGoal.getTargetMoney());
       }
+
+      for (PaymentDetail paymentDetail : paymentDetailList) {
+        checkingMap.put(paymentDetail.getPaymentCategory(), checkingMap.get(paymentDetail.getPaymentCategory()) - paymentDetail.getPaymentMoney());
+
+        if (checkingMap.get(paymentDetail.getPaymentCategory()) < 0) {
+          challenge.setChallengeType(ChallengeType.FAIL);
+          challengeRepository.save(challenge);
+          break;
+        }
+      }
+
+      challenge.setChallengeType(ChallengeType.SUCCESS);
+      // TODO : 포인트적립 로직 구현
+      challengeRepository.save(challenge);
     }
   }
 }

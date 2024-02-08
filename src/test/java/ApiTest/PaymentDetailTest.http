@@ -1,0 +1,42 @@
+### 결제내역 등록
+POST http://localhost:8080/api/payment-detail/register?challengeId=1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3Mzc4MjQyLCJleHAiOjE3MDczODE4NDJ9.slHOP4lJpInznk-2eLnACQHZC-TBjiryAWNx3_k3Sl4
+
+{
+  "paymentCategory": "FOOD",
+  "paymentDateTime": "2024-04-12T12:30:00",
+  "paymentMoney": 15000,
+  "paymentLocation": "집 앞 분식집"
+}
+
+
+### 결제내역 조회
+GET http://localhost:8080/api/payment-detail/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3Mzc4MjQyLCJleHAiOjE3MDczODE4NDJ9.slHOP4lJpInznk-2eLnACQHZC-TBjiryAWNx3_k3Sl4
+
+
+### 회원의 전체 결제내역 조회
+GET http://localhost:8080/api/payment-detail/member
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3Mzc4MjQyLCJleHAiOjE3MDczODE4NDJ9.slHOP4lJpInznk-2eLnACQHZC-TBjiryAWNx3_k3Sl4
+
+
+### 결제내역 수정
+PUT http://localhost:8080/api/payment-detail/update/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3Mzc4MjQyLCJleHAiOjE3MDczODE4NDJ9.slHOP4lJpInznk-2eLnACQHZC-TBjiryAWNx3_k3Sl4
+
+{
+  "paymentCategory": "FOOD",
+  "paymentDateTime": "2024-04-12T12:30:00",
+  "paymentMoney": 12000,
+  "paymentLocation": "집 앞 분식집"
+}
+
+
+### 결제내역 삭제
+DELETE http://localhost:8080/api/payment-detail/delete/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3Mzc4MjQyLCJleHAiOjE3MDczODE4NDJ9.slHOP4lJpInznk-2eLnACQHZC-TBjiryAWNx3_k3Sl4
