@@ -1,4 +1,4 @@
-package com.master.savemoney.challenge.scheduler;
+package com.master.savemoney.common.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;

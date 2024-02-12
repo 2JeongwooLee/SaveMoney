@@ -9,7 +9,6 @@ import com.master.savemoney.common.type.ConsumptionCategory;
 import com.master.savemoney.paymentDetail.entity.PaymentDetail;
 import com.master.savemoney.paymentDetail.repository.PaymentDetailRepository;
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -27,7 +26,7 @@ public class ChallengeScheduler {
   private final PaymentDetailRepository paymentDetailRepository;
 
   @Scheduled(cron = "${scheduler.start.challenge}")
-  public void challengStartScheduling() {
+  public void challengeStartScheduling() {
     log.info("해당 월 챌린지 시작");
 
     List<Challenge> challengeList = challengeRepository
@@ -63,7 +62,6 @@ public class ChallengeScheduler {
       }
 
       challenge.setChallengeType(ChallengeType.SUCCESS);
-      // TODO : 포인트적립 로직 구현
       challengeRepository.save(challenge);
     }
   }
