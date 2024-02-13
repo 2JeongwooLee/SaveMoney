@@ -27,6 +27,7 @@ public class PointDepositScheduler {
   public void pointDepositScheduling() {
     log.info("포인트 적립");
 
+    // TODO : paging 처리
     List<Challenge> challengeList = challengeRepository.findAllBySuccessChallenge(LocalDateTime.now().minusDays(BEFORE_MONTH_VALUE));
 
     LocalDate now = LocalDate.now();
