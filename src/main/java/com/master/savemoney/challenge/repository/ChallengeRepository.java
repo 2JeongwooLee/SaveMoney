@@ -24,4 +24,9 @@ public interface ChallengeRepository extends JpaRepository<Challenge, Long> {
 
   @Query("SELECT c FROM Challenge c WHERE c.challengeType = 'IN_PROGRESS' AND c.member.id = :memberId")
   Optional<Challenge> findByInProgressChallenge(Long memberId);
+
+  @Query("SELECT c FROM Challenge c WHERE c.challengeType = 'SUCCESS' AND c.challengeStartDateTime <= :dateTime AND c.challengeEndDateTime > :dateTime")
+  List<Challenge> findAllBySuccessChallenge(@Param("dateTime") LocalDateTime dateTime);
+
+
 }
