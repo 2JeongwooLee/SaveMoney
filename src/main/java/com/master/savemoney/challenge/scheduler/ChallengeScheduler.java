@@ -27,7 +27,7 @@ public class ChallengeScheduler {
 
   @Scheduled(cron = "${scheduler.start.challenge}")
   public void challengeStartScheduling() {
-    log.info("해당 월 챌린지 시작");
+    log.info(LocalDateTime.now().getMonth() + "월 챌린지 시작");
 
     List<Challenge> challengeList = challengeRepository
         .findAllStartChallenge(LocalDateTime.now());
@@ -40,7 +40,7 @@ public class ChallengeScheduler {
 
   @Scheduled(cron = "${scheduler.end.challenge}")
   public void challengeEndScheduling() {
-    log.info("해당 월 챌린지 종료");
+    log.info(LocalDateTime.now().getMonth() + "월 챌린지 종료");
 
     List<Challenge> challengeList = challengeRepository.findAllEndChallenge();
 
