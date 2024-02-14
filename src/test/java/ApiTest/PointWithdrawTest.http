@@ -1,0 +1,10 @@
+### 결제
+POST http://localhost:8080/api/point-withdraw/payment/9
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3OTI0MDk4LCJleHAiOjE3MDc5Mjc2OTh9.RPJ3cza5YEGAtq-nETOw70Mmc6IVoaYEac205DKCzJg
+
+
+### 포인트 출금 내역 조회
+GET http://localhost:8080/api/point-withdraw/member
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNkQG5hdmVyLmNvbSIsInJvbGVzIjoiTUVNQkVSIiwiaWF0IjoxNzA3OTI0MDk4LCJleHAiOjE3MDc5Mjc2OTh9.RPJ3cza5YEGAtq-nETOw70Mmc6IVoaYEac205DKCzJg
