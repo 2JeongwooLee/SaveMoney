@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,22 +30,20 @@ public class Member extends BaseEntity{
   private Long id;
 
   @Email
+  @Pattern(regexp = "^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\\.[A-Za-z0-9\\-]+$")
   @Column(unique = true)
   private String email;
 
-  @Column
-  @NotBlank
+  @Column(nullable = false)
   private String password;
 
-  @Column
-  @NotBlank
+  @Column(nullable = false)
   private String memberName;
 
-  @Column
-  @NotBlank
+  @Column(nullable = false)
   private String phoneNumber;
 
-  @Column
+  @Column(nullable = false)
   private Long point;
 
 }

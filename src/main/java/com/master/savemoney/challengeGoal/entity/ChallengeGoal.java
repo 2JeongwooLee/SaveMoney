@@ -38,10 +38,10 @@ public class ChallengeGoal extends BaseEntity{
   @JoinColumn(name = "challenge_id")
   private Challenge challenge;
 
-  @Column
+  @Column(nullable = false)
   @Enumerated(EnumType.STRING)
   private ConsumptionCategory targetCategory;
 
-  @Column
+  @Column(nullable = false)
   private Integer targetMoney;
 }

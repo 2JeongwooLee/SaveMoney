@@ -42,10 +42,10 @@ public class PointDeposit extends BaseEntity {
   @OneToOne(fetch = FetchType.LAZY)
   private Challenge challenge;
 
-  @Column
+  @Column(nullable = false)
   private LocalDateTime pointDepositDateTime;
 
-  @Column
+  @Column(nullable = false)
   private Integer depositPoint;
 
 }

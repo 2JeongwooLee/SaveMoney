@@ -42,7 +42,7 @@ public class PointWithdraw extends BaseEntity {
   @OneToOne(fetch = FetchType.LAZY)
   private Goods goods;
 
-  @Column
+  @Column(nullable = false)
   private LocalDateTime pointWithdrawDateTime;
 
   @Column

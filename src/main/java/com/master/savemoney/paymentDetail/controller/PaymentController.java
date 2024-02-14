@@ -1,10 +1,10 @@
 package com.master.savemoney.paymentDetail.controller;
 
 import com.master.savemoney.common.security.TokenProvider;
-import com.master.savemoney.paymentDetail.dto.PaymentDetailDto;
 import com.master.savemoney.paymentDetail.dto.RegisterPaymentDetailForm;
 import com.master.savemoney.paymentDetail.dto.UpdatePaymentDetailForm;
 import com.master.savemoney.paymentDetail.service.PaymentDetailService;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -27,6 +27,7 @@ public class PaymentController {
   private final TokenProvider tokenProvider;
 
   // 결제내역 등록
+  @ApiOperation(value = "결제내역 등록")
   @PostMapping("/register")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> registerPaymentDetail(
@@ -39,6 +40,7 @@ public class PaymentController {
   }
 
   // 결제내역 조회
+  @ApiOperation(value = "결제내역 조회")
   @GetMapping("/{paymentDetailId}")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> getPaymentDetail(@RequestHeader("Authorization") String token, @PathVariable Long paymentDetailId){
@@ -48,6 +50,7 @@ public class PaymentController {
   }
 
   // 회원의 전체 결제내역 조회
+  @ApiOperation(value = "회원의 전체 결제내역 조회")
   @GetMapping("/member")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> getAllMemberPaymentDetail(@RequestHeader("Authorization") String token){
@@ -57,6 +60,7 @@ public class PaymentController {
   }
 
   // 결제내역 수정
+  @ApiOperation(value = "결제내역 수정")
   @PutMapping("/update/{paymentDetailId}")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> updatePaymentDetail(
@@ -69,6 +73,7 @@ public class PaymentController {
   }
 
   // 결제내역 삭제
+  @ApiOperation(value = "결제내역 삭제")
   @DeleteMapping("/delete/{paymentDetailId}")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> deletePaymentDetail(@RequestHeader("Authorization") String token, @PathVariable Long paymentDetailId){

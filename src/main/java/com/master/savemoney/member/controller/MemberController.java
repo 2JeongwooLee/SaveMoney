@@ -7,6 +7,7 @@ import com.master.savemoney.member.dto.RegisterForm;
 import com.master.savemoney.member.dto.UpdateForm;
 import com.master.savemoney.member.entity.Member;
 import com.master.savemoney.member.service.MemberService;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,7 @@ public class MemberController {
   private final TokenProvider tokenProvider;
 
   // 회원가입
+  @ApiOperation(value = "회원가입")
   @PostMapping("/register")
   public ResponseEntity<?> registerMember(@RequestBody RegisterForm form) {
     MemberDto member = memberService.register(form);
@@ -37,6 +39,7 @@ public class MemberController {
   }
 
   // 로그인
+  @ApiOperation(value = "로그인")
   @PostMapping("/login")
   public ResponseEntity<?> loginMember(@RequestBody LoginForm form) {
     Member member = memberService.loginMember(form);
@@ -46,6 +49,7 @@ public class MemberController {
   }
 
   // 회원정보 조회
+  @ApiOperation(value = "회원정보 조회")
   @GetMapping("/info")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> infoMember(@RequestHeader("Authorization") String token) {
@@ -55,6 +59,7 @@ public class MemberController {
   }
 
   // 회원정보 수정
+  @ApiOperation(value = "회원정보 수정")
   @PutMapping("/update")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> updateMember(@RequestHeader("Authorization") String token,
@@ -65,6 +70,7 @@ public class MemberController {
   }
 
   // 회원탈퇴
+  @ApiOperation(value = "회원탈퇴")
   @DeleteMapping("/delete")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> deleteMember(@RequestHeader("Authorization") String token) {

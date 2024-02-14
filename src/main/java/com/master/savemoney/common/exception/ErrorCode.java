@@ -38,7 +38,10 @@ public enum ErrorCode {
 
   // 결제
   STOCK_IS_NOT_ENOUGH(HttpStatus.BAD_REQUEST.value(), "재고가 부족합니다."),
-  POINT_IS_NOT_ENOUGH(HttpStatus.BAD_REQUEST.value(), "포인트가 부족합니다.")
+  POINT_IS_NOT_ENOUGH(HttpStatus.BAD_REQUEST.value(), "포인트가 부족합니다."),
+
+  // 내부 서버
+  INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value(), "내부 서버 오류가 발생했습니다.")
   ;
 
   private final int statusCode;

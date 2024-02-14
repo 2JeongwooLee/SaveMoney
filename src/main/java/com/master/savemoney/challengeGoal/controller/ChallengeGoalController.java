@@ -5,6 +5,7 @@ import com.master.savemoney.challengeGoal.dto.RegisterChallengeGoalForm;
 import com.master.savemoney.challengeGoal.dto.UpdateChallengeGoalForm;
 import com.master.savemoney.challengeGoal.service.ChallengeGoalService;
 import com.master.savemoney.common.security.TokenProvider;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,6 +27,7 @@ public class ChallengeGoalController {
   private final TokenProvider tokenProvider;
 
   // 챌린지 소비항목별 목표금액 등록
+  @ApiOperation(value = "챌린지 목표 등록")
   @PostMapping("/register/{challengeId}")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> registerChallengeGoal(@RequestHeader("Authorization") String token,
@@ -35,6 +37,7 @@ public class ChallengeGoalController {
   }
 
   // 챌린지 목표 조회
+  @ApiOperation(value = "챌린지 목표 조회")
   @GetMapping("/{challengeGoalId}")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> getChallengeGoal(@RequestHeader("Authorization") String token, @PathVariable Long challengeGoalId) {
@@ -43,6 +46,7 @@ public class ChallengeGoalController {
   }
 
   // 챌린지 목표 수정
+  @ApiOperation(value = "챌린지 목표 수정")
   @PutMapping("/update/{challengeGoalId}")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> updateChallengeGoal(@RequestHeader("Authorization") String token,
@@ -52,6 +56,7 @@ public class ChallengeGoalController {
   }
 
   // 챌린지 목표 삭제
+  @ApiOperation(value = "챌린지 목표 삭제")
   @DeleteMapping("/delete/{challengeGoalId}")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> deleteChallengeGoal(@RequestHeader("Authorization") String token, @PathVariable Long challengeGoalId) {
