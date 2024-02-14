@@ -29,7 +29,11 @@ public enum ErrorCode {
   // 결제내역
   PAYMENT_DETAIL_NOT_FOUND(HttpStatus.BAD_REQUEST.value(), "결제내역을 찾을 수 없습니다."),
   MEMBER_NOT_MATCH_PAYMENT_DETAIL(HttpStatus.BAD_REQUEST.value(), "회원님의 결제내역이 아닙니다."),
-  PAYMENT_DETAIL_EMPTY(HttpStatus.BAD_REQUEST.value(), "등록된 결제내역이 없습니다.")
+  PAYMENT_DETAIL_EMPTY(HttpStatus.BAD_REQUEST.value(), "등록된 결제내역이 없습니다."),
+
+  // 상품
+  GOODS_NOT_REGISTERED(HttpStatus.BAD_REQUEST.value(), "등록된 상품이 없습니다."),
+  GOODS_NOT_SEARCHED(HttpStatus.BAD_REQUEST.value(), "검색된 상품이 없습니다.")
   ;
 
   private final int statusCode;
