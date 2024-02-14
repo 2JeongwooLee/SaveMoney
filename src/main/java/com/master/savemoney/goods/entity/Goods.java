@@ -32,9 +32,9 @@ public class Goods extends BaseEntity{
   private String name;
 
   @Column
-  private Integer price;
+  private int price;
 
   @Column
-  private Integer stock;
+  private int stock;
 
 }
