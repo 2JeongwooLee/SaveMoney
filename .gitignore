@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+SaveMoneyLog.log
+SaveMoneyLog-2024-02-15.0.log.gz
