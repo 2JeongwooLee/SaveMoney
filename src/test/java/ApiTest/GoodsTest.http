@@ -1,8 +1,8 @@
 ### 전체 상품 조회
-GET http://localhost:8080/api/goods/all
+GET http://localhost:8080/api/goods/all?page=1
 Content-Type: application/json
 
 
 ### 상품 검색
-GET http://localhost:8080/api/goods/스타벅스
+GET http://localhost:8080/api/goods/스타벅스?page=0
 Content-Type: application/json

@@ -15,8 +15,8 @@ import lombok.Setter;
 public class GoodsDto {
   private Long id;
   private String name;
-  private Integer price;
-  private Integer stock;
+  private int price;
+  private int stock;
 
   public static GoodsDto from(Goods goods) {
     return GoodsDto.builder()

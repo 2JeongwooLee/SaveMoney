@@ -32,8 +32,13 @@ public enum ErrorCode {
   PAYMENT_DETAIL_EMPTY(HttpStatus.BAD_REQUEST.value(), "등록된 결제내역이 없습니다."),
 
   // 상품
+  GOODS_NOT_FOUND(HttpStatus.BAD_REQUEST.value(), "상품을 찾을 수 없습니다."),
   GOODS_NOT_REGISTERED(HttpStatus.BAD_REQUEST.value(), "등록된 상품이 없습니다."),
-  GOODS_NOT_SEARCHED(HttpStatus.BAD_REQUEST.value(), "검색된 상품이 없습니다.")
+  GOODS_NOT_SEARCHED(HttpStatus.BAD_REQUEST.value(), "검색된 상품이 없습니다."),
+
+  // 결제
+  STOCK_IS_NOT_ENOUGH(HttpStatus.BAD_REQUEST.value(), "재고가 부족합니다."),
+  POINT_IS_NOT_ENOUGH(HttpStatus.BAD_REQUEST.value(), "포인트가 부족합니다.")
   ;
 
   private final int statusCode;
