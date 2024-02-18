@@ -1,5 +1,6 @@
 package com.master.savemoney.pointWithdraw.service;
 
+import com.master.savemoney.common.annotation.DistributedLock;
 import com.master.savemoney.common.exception.CustomException;
 import com.master.savemoney.common.exception.ErrorCode;
 import com.master.savemoney.goods.entity.Goods;
@@ -23,7 +24,7 @@ public class PointWithdrawService {
   private final GoodsRepository goodsRepository;
   private final MemberRepository memberRepository;
 
-  @Transactional
+  @DistributedLock(key = "#lockName")
   public PointWithdrawDto paymentGoods(String email, Long goodsId) {
     Member member = memberRepository.findByEmail(email)
         .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
