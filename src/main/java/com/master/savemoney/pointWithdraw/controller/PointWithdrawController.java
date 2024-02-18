@@ -2,6 +2,7 @@ package com.master.savemoney.pointWithdraw.controller;
 
 import com.master.savemoney.common.security.TokenProvider;
 import com.master.savemoney.pointWithdraw.service.PointWithdrawService;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,6 +21,7 @@ public class PointWithdrawController {
   private final TokenProvider tokenProvider;
 
   // 결제
+  @ApiOperation(value = "상품 결제 및 포인트 출금")
   @PostMapping("/payment/{goodsId}")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> paymentGoods(@RequestHeader("Authorization") String token, @PathVariable Long goodsId) {
@@ -27,6 +29,7 @@ public class PointWithdrawController {
   }
 
   // 포인트 출금 조회
+  @ApiOperation(value = "포인트 출금 내역 조회")
   @GetMapping("/member")
   @PreAuthorize("hasRole('ROLE_MEMBER')")
   public ResponseEntity<?> getPointWithdraw(@RequestHeader("Authorization") String token) {

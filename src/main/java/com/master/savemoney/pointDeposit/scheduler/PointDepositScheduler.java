@@ -25,7 +25,7 @@ public class PointDepositScheduler {
   private final int ADDITIONAL_POINT = 100;
   @Scheduled(cron = "${scheduler.point.deposit}")
   public void pointDepositScheduling() {
-    log.info("포인트 적립");
+    log.info("포인트 적립 스케줄러 동작");
 
     // TODO : paging 처리
     List<Challenge> challengeList = challengeRepository.findAllBySuccessChallenge(LocalDateTime.now().minusDays(BEFORE_MONTH_VALUE));

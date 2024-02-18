@@ -39,17 +39,17 @@ public class Challenge extends BaseEntity{
   @ManyToOne(fetch = FetchType.LAZY)
   private Member member;
 
-  @Column
+  @Column(nullable = false)
   private String challengeName;
 
-  @Column
+  @Column(nullable = false)
   @Enumerated(EnumType.STRING)
   private ChallengeType challengeType;
 
-  @Column
+  @Column(nullable = false)
   private LocalDateTime challengeStartDateTime;
 
-  @Column
+  @Column(nullable = false)
   private LocalDateTime challengeEndDateTime;
 
 }

@@ -7,6 +7,8 @@ import com.master.savemoney.member.entity.Member;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -42,16 +44,17 @@ public class PaymentDetail extends BaseEntity{
   @JoinColumn(name = "challenge_id")
   private Challenge challenge;
 
-  @Column
+  @Column(nullable = false)
+  @Enumerated(EnumType.STRING)
   private ConsumptionCategory paymentCategory;
 
-  @Column
+  @Column(nullable = false)
   private LocalDateTime paymentDateTime;
 
-  @Column
+  @Column(nullable = false)
   private Integer paymentMoney;
 
-  @Column
+  @Column(nullable = false)
   private String paymentLocation;
 
 }
